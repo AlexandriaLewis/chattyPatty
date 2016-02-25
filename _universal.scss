@@ -1,0 +1,10 @@
+$color1: #ff77a0 ; //rgba(255, 119, 160, 100) pink
+$color2: #ffd014 ; //rgba(255, 208, 20, 100) yellow
+$color3: #3aa2f2 ; //rgba(58, 162, 242, 100) blue
+$color4: #2aa517 ; //rgba(42, 165, 23, 100) green
+$color5: #2b1425 ; //rgba(43, 20, 37, 100) dark
+
+* {
+  background-color: $color3;
+  color: $color5;
+}
