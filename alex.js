@@ -27,7 +27,7 @@ var chatroom = {
   },
 
   initStyling: function(){
-    setInterval(function(){chatroom.getPost}, 2000);
+    setInterval(function(){chatroom.getPost}, 200);
   },
 
   submitUsername: function(event){
