@@ -4,12 +4,7 @@
 //hank's repo he's so nice
 // https://github.com/hankgielarowski/chatroom/blob/master/chatroom/main.js
 
-var chatPosts = [
-  {
-    username: "welcomBot",
-    message: "Welcome to the chat!"
-  }
-];
+var chatPosts = [];
 
 var enterMsg = {
   message: 'has signed in!'
@@ -40,25 +35,22 @@ var chatroom = {
 
   submitUsername: function(event){
     event.preventDefault();
-    console.log("IT WORKED!!!!");
 
     username = $('input[name="userName"]').val();
     sessionStorage.setItem('user', username);
-    console.log(username);
 
     var selected = "." + $(this).attr('rel');
     $(selected).closest('section').removeClass('inactive');
     $(selected).siblings('section').addClass('inactive');
 
     var newUser = chatroom.getUsernameFromDom(); //returns input in an obj
-    chatroom.addUser(newUser); //puts obj into array
+    chatPosts += chatroom.addUser(newUser); //puts obj into array
     $('input[name="username"]').val('');
   },
 
   getUsernameFromDom: function(){
     var username = sessionStorage.getItem('user');
     var message = enterMsg.message;
-    console.log(username);
     return {
       username: username,
       message: message
@@ -84,7 +76,6 @@ var chatroom = {
        url: chatroom.url,
        method: 'GET',
        success: function (posts) {
-         console.log(posts);
          chatroom.addUserToDom(posts);
        },
        error: function (err) {
@@ -107,15 +98,16 @@ var chatroom = {
   submitPost: function (event) {
     event.preventDefault();
     var   newPost = chatroom.getPostFromDom();
-    console.log(newPost);
       chatroom.addPost(newPost);
 
-      $('input').val('');
+      $('input[name="message"]').val('');
   },
 
   getPostFromDom: function() {
-    var username = ; //IMPORTANT QUESTION HOW DO?
+    var username = sessionStorage.getItem('user');
+      console.log(username);
     var message = $('input[name="message"]').val();
+    console.log(message);
     return {
       username: username,
       message: message
@@ -142,7 +134,6 @@ var chatroom = {
      url: chatroom.url,
      method: 'GET',
      success: function (chatPosts) {
-       console.log(chatPosts);
        chatroom.addAllPostsToDom(chatPosts);
      },
      error: function (err) {
@@ -160,10 +151,6 @@ var chatroom = {
        $('.chatWindow').append(tmpl(el));
      })
    },
-
-  getPostFromDom: function (){
-
-  },
 
   deletePostFromDom: function(){
 
