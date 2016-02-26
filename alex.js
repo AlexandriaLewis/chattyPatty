@@ -4,7 +4,12 @@
 //hank's repo he's so nice
 // https://github.com/hankgielarowski/chatroom/blob/master/chatroom/main.js
 
-var chatPosts = [];
+var chatPosts = [
+  {
+    username: "welcomBot",
+    message: "Welcome to the chat!"
+  }
+];
 
 var enterMsg = {
   message: 'has signed in!'
@@ -15,7 +20,7 @@ var enterMsg = {
 
 var chatroom = {
 
-  url: 'http://tiny-tiny.herokuapp.com/collections/chattyPatty2',
+  url: 'http://tiny-tiny.herokuapp.com/collections/chattyPatty3',
   init: function(){
     chatroom.initEvents();
     chatroom.initStyling();
@@ -23,7 +28,7 @@ var chatroom = {
 
   initEvents: function(){
     $('body').on('click', '.submit', chatroom.submitUsername);
-    // $('.enterUsername').on('click', '.send', );
+    $('body').on('click', '.send', chatroom.submitPost);
     // $('.enterUsername').on('click', '.delete', );
     // $('.enterUsername').on('click', '.exit', );
   },
@@ -92,27 +97,69 @@ var chatroom = {
     $('.chatWindow').html('');
     _.each(postsArr, function (el) {
 
-      var header = _.template(template.header);
-      var signature = _.template(template.signedIn);
-      $('.chatWindow').append(header(el));
-      // addPostToDom(el, templates.post, $('section'));
+      // var header = _.template(template.header);
+      var signature = _.template(template.post);
+      // $('div.header').html(header(el));
+      $('.chatWindow').append(signature(el));
     })
   },
 
-  addMessageToDom: function (postsArr) {
-    // $('.chatWindow').html('');
-    // _.each(postsArr, function (el) {
-    //
-    //   var header = _.template(template.header);
-    //   var signature = _.template(template.signedIn);
-    //   $('.chatWindow').append(header(el));
-    //   // addPostToDom(el, templates.post, $('section'));
-    // })
+  submitPost: function (event) {
+    event.preventDefault();
+    var   newPost = chatroom.getPostFromDom();
+    console.log(newPost);
+      chatroom.addPost(newPost);
+
+      $('input').val('');
   },
 
-  sendPost: function(){ //submit username
-
+  getPostFromDom: function() {
+    var username = ; //IMPORTANT QUESTION HOW DO?
+    var message = $('input[name="message"]').val();
+    return {
+      username: username,
+      message: message
+    }
   },
+
+  addPost: function(newPost){
+    $.ajax({
+      url: chatroom.url,
+      method: 'POST',
+      data: newPost,
+      success: function(response){
+        chatroom.getPosts();
+      },
+      error: function(err){
+        console.log("error", err);
+      }
+    })
+  },
+
+  getPosts: function getPosts() {
+
+   $.ajax({
+     url: chatroom.url,
+     method: 'GET',
+     success: function (chatPosts) {
+       console.log(chatPosts);
+       chatroom.addAllPostsToDom(chatPosts);
+     },
+     error: function (err) {
+       console.log(err);
+     }
+   });
+
+ },
+
+   addAllPostsToDom: function (chatArr) {
+     $('.chatWindow').html('');
+     _.each(chatArr, function (el) {
+
+       var tmpl = _.template(template.post);
+       $('.chatWindow').append(tmpl(el));
+     })
+   },
 
   getPostFromDom: function (){
 
