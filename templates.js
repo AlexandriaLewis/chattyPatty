@@ -1,9 +1,8 @@
 //append to div.chatWindow
 var template = {
   header: [
-      '<p class="welcome">Welcome,</p><p class="username"><%= username %></p>',
-      '<button class="exit" rel="enterUsername">exit chat</button>'
-  ].join(""),
+      '<p class="welcome">Welcome,</p><p class="username"><%= username %></p>'
+  ],
 
   post: [
     '<div class="chatPost" data-postid="<%= _id %>">',
