@@ -10,32 +10,42 @@ var enterMsg = {
   message: 'has signed in!'
 }
 
+// var username = "";
 var chatroom = {
 
   url: 'http://tiny-tiny.herokuapp.com/collections/chattyPatty',
   init: function(){
-    //init events
-    //init styling
+    chatroom.initEvents();
+    chatroom.initStyling();
   },
 
   initEvents: function(){
-    $('.chatbox').on('click', '.submit', chatroom.submitUsername);
-    // $('.enterUsername').on('click', '.send', );
-    // $('.enterUsername').on('click', '.delete', );
-    // $('.enterUsername').on('click', '.exit', );
+    $('body').on('click', '.submit', chatroom.submitUsername);
+    $('body').on('click', '.send', chatroom.submitPost);
+    $('body').on('click', '.delete', chatroom.deletePostFromDom);
+    $('body').on('click', '.exit', chatroom.exitChat);
   },
 
   initStyling: function(){
-    //add allPosts
-    //get posts
+chatroom.getUser();
   },
 
 
   submitUsername: function(event){
     event.preventDefault();
-    var newUser = chatroom.getUsernameFromDom(); //put content in obj
-    addPost(newUser);
-    addAllPosts(newUser);
+
+
+    username = $('input[name="userName"]').val();
+    sessionStorage.setItem('user', username);
+
+
+    var selected = "." + $(this).attr('rel');
+    $(selected).closest('section').removeClass('inactive');
+    $(selected).siblings('section').addClass('inactive');
+
+    var newUser = chatroom.getUsernameFromDom(); //returns input in an obj
+    chatroom.addUser(newUser); //puts obj into array
+    $('input[name="username"]').val('');
   },
 
   getUsernameFromDom: function(){
@@ -47,32 +57,62 @@ var chatroom = {
     }
   },
 
-  sendPost: function(event){
+  addUser: function(newPost){
+    $.ajax({
+      url: chatroom.url,
+      method: 'POST',
+      data: newPost,
+      success: function(response){
+        chatroom.getUser();
+      },
+      error: function(err){
+        console.log("error", err);
+      }
+    })
+  },
+
+  getUser: function(){
+    $.ajax({
+       url: chatroom.url,
+       method: 'GET',
+       success: function (posts) {
+         console.log(posts);
+         chatroom.addUserToDom(posts);
+       },
+       error: function (err) {
+         console.log(err);
+       }
+     });
+  },
+
+  addUserToDom: function (postsArr) {
+    $('.chatWindow').html('');
+    _.each(postsArr, function (el) {
+
+      // var header = _.template(template.header);
+      var signature = _.template(template.post);
+      // $('div.header').append(header(el));
+      $('.chatWindow').append(signature(el));
+    })
+  },
+
+  submitPost: function (event) {
     event.preventDefault();
-    var newPost = chatroom.getPostFromDom();
-      // console.log(newPost);
-    chatroom.addPost(newPost);
-    $('input').val('');
+    var   newPost = chatroom.getPostFromDom();
+      chatroom.addPost(newPost);
+
+      $('input[name="message"]').val('');
   },
-
-  getPostFromDom: function (){
-
-  },
-
-  deletePostFromDom: function(){
-
-  },
-
-  addAllPosts: function(){
-
-  },
-
-  getPosts: function(){
-
+  getPostFromDom: function() {
+    var username = sessionStorage.getItem('user');
+    var message = $('input[name="message"]').val();
+    return {
+      username: username,
+      message: message
+    }
   },
 
   addPost: function(newPost){
-    chatPosts.push(newPost);
     $.ajax({
       url: chatroom.url,
       method: 'POST',
@@ -86,18 +126,56 @@ var chatroom = {
     })
   },
 
-  deletePost: function deletePost (idx){
+  getPosts: function getPosts() {
+
+   $.ajax({
+     url: chatroom.url,
+     method: 'GET',
+     success: function (chatPosts) {
+       chatroom.addAllPostsToDom(chatPosts);
+     },
+     error: function (err) {
+       console.log(err);
+     }
+   });
+
+ },
+
+ addAllPostsToDom: function (chatArr) {
+   $('.chatWindow').html('');
+   _.each(chatArr, function (el) {
+
+     var tmpl = _.template(template.post);
+     $('.chatWindow').append(tmpl(el));
+   })
+ },
+
+deletePostFromDom: function(event){
+var postId = $(this).closest('div').data('postid');
+console.log(postId);
+chatroom.deletePost(postId);
+
+chatroom.addAllPostsToDom();
+  },
+
+  deletePost: function (postId){
     $.ajax({
-      url: chatroom.url + idx,
+      url: chatroom.url + '/' + postId,
       method: 'DELETE',
       success: function(response){
       console.log(response);
-      addAllPosts(getPosts());
+      chatroom.getPosts();
   }
 })
 },
 
   exitChat: function(){
-
+    var selected = "." + $(this).attr('rel');
+    $(selected).closest('section').removeClass('inactive');
+    $(selected).siblings('section').addClass('inactive');
+    }
   }
-}
+  $(document).ready(function(){
+  //-------------------------------------------------------------->
+  chatroom.init();
+})
