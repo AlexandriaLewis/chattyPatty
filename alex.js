@@ -28,7 +28,8 @@ var chatroom = {
 
   initStyling: function(){
     var i = 1;
-    var refresh = setInterval(function() { chatroom.addAllPostsToDom }, 2000);
+    var timer = setInterval(chatroom.addAllPostsToDom(), 2000);
+    var timer = setInterval(function() { chatroom.addAllPostsToDom(i++) }, 2000);
   },
 
 
@@ -173,7 +174,6 @@ var chatroom = {
 
   exitChat: function(){
     var selected = "." + $(this).attr('rel');
-    clearInterval(timer);
     $(selected).closest('section').removeClass('inactive');
     $(selected).siblings('section').addClass('inactive');
     }
