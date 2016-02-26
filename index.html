@@ -17,7 +17,7 @@
 
       <section class="enterUsername">
         <form class="" action="index.html" method="post">
-          <input type="text" placeholder="Enter User Name" name="userName">
+          <input type="text" placeholder="Enter Username" name="userName">
           <button class="submit">Submit</button>
         </form>
       </section>
@@ -26,16 +26,26 @@
 
         <div class="chatWindow">
 
+          <div class="header">
+            <p class="welcome">Welcome, </p><p class="username">user</p>
+            <button class="exit">exit chat</button>
+          </div>
+
+          <div class="signedIn">
+            <h6 class="userName">username</h6>
+            <p class="message">has signed in!</p>
+          </div>
+
           <div class="chatPost">
             <h6 class="userName">username</h6>
-            <p class="message">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos expedita, voluptatem neque recusandae cum tempora at similique nesciunt corporis in iure illum consequuntur officia ad et distinctio. Quam, temporibus, porro!</p>
+            <p class="message">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
             <button class="delete">x</button>
           </div>
 
         </div>
 
         <form class="" action="index.html" method="post">
-          <input type="text" placeholder="Get Chatty Patty" name="message">
+          <input type="text" placeholder="Begin typing" name="message">
           <button class="send">Send Chatty</button>
         </form>
 
@@ -49,6 +59,7 @@
 
     <script src="bower_components/jquery/dist/jquery.js" charset="utf-8"></script>
     <script src="bower_components/underscore/underscore.js" charset="utf-8"></script>
+    <script type="text/javascript" src="templates.js"></script>
     <script type="text/javascript" src="chatObj.js"></script>
     <script type="text/javascript" src="main.js"></script>
   </body>

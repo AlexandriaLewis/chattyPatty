@@ -52,9 +52,10 @@ header {
   margin: 0;
   padding: 0;
   width: 103%;
-  // position: absolute;
-  // left: -2%;
-  // top: -2%;
+
+  h1 {
+    color: #ff77a0;
+  }
 }
 
 footer {
@@ -63,9 +64,8 @@ footer {
   margin: 0;
   width: 100%;
   padding-top: 1px;
-  // position: absolute;
-  // top: 92%;
-  // left: 0%;
+  margin-top: 22px;
+
   h5 {
     margin: 0;
     margin-top: 2%;

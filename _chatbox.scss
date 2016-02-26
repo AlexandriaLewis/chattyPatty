@@ -15,8 +15,52 @@ section.chatbox {
     position: relative;
     top: 6%;
 
+    div.header {
+      background-color: #ffd014;
+      border-bottom: 2px solid #ffd014;
+      p.welcome {
+        background-color: inherit;
+        width: 65px;
+        margin-left: 6px;
+      }
+      p.username {
+        font-size: 14px;
+        background-color: inherit;
+        color: #3aa2f2;
+        width: 58%;
+        font-weight: bold;
+      }
+      button.exit {
+        background-color: #ff77a0;
+        border: 0;
+        border-radius: 7px;
+        width: 71px;
+        position: absolute;
+        right: 0;
+      }
+    }
+
+    div.signedIn {
+      width: 100%;
+      position: relative;
+      background-color: inherit;
+      border-bottom: 1px solid #DADADA;
+
+      p {
+        width: 70%;
+        color: #ff77a0;
+      }
+
+      h6 {
+        color: #ff77a0;
+        display: inline-block;
+        margin: 0 14px;
+      }
+    }
+
     div.chatPost {
       width: 100%;
+      min-height: 48px;
       position: relative;
       background-color: inherit;
       border-bottom: 1px solid #DADADA;
@@ -60,6 +104,8 @@ section.chatbox {
       border: 0;
       border-radius: 7px;
       width: 100px;
+      position: absolute;
+      right: 0;
     }
 
   }

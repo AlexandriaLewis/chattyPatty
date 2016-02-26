@@ -1,5 +1,1 @@
-var chatObj = {
-  username:
-  message:
-  online: true;
-};
+var chatObj = [];
