@@ -16,7 +16,7 @@ var chatroom = {
   url: 'http://tiny-tiny.herokuapp.com/collections/chattyPatty',
   init: function(){
     chatroom.initEvents();
-    // chatroom.initStyling();
+    chatroom.initStyling();
   },
 
   initEvents: function(){
@@ -27,7 +27,7 @@ var chatroom = {
   },
 
   initStyling: function(){
-
+    setInterval(function(){chatroom.getPost}, 2000);
   },
 
   submitUsername: function(event){
@@ -179,5 +179,6 @@ var chatroom = {
   $(document).ready(function(){
   //-------------------------------------------------------------->
   chatroom.init();
+
   //-------------------------------------------------------------->
 })
