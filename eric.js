@@ -20,8 +20,8 @@ var chatroom = {
 
   initEvents: function(){
     $('.chatbox').on('click', '.submit', chatroom.submitUsername);
-    // $('.enterUsername').on('click', '.send', );
-    // $('.enterUsername').on('click', '.delete', );
+    $('.enterUsername').on('click', '.send', );
+    $('.chatWindow').on('click', '.delete', chatroom. );
     // $('.enterUsername').on('click', '.exit', );
   },
 
@@ -92,7 +92,7 @@ var chatroom = {
       method: 'DELETE',
       success: function(response){
       console.log(response);
-      addAllPosts(getPosts());
+      getUser.getPosts());
   }
 })
 },
