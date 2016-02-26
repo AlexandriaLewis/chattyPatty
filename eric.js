@@ -96,6 +96,7 @@ var chatroom = {
   }
 })
 },
+
   exitChat: function(){
 
   }
