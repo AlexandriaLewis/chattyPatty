@@ -5,6 +5,32 @@ section.chatbox {
   border-radius: 17px;
   margin: 35px auto;
 
+  div.header {
+    background-color: inherit;
+    border-radius: 17px;
+
+    p.welcome {
+      margin-left: 12%;
+      margin-right: 2%;
+    }
+
+    p.username {
+      font-size: 14px;
+      font-weight: bold;
+      color: #ff77a0;
+    }
+
+    button.exit {
+      position: absolute;
+      width: 80px;
+      background-color: #ff77a0;
+      border: 0;
+      border-radius: 7px;
+      right: 19%;
+      top: 45%;
+    }
+  }
+
   div.chatWindow {
     width: 80%;
     height: 300px;

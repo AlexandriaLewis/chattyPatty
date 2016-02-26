@@ -4,8 +4,6 @@
 //hank's repo he's so nice
 // https://github.com/hankgielarowski/chatroom/blob/master/chatroom/main.js
 
-var chatPosts = [];
-
 var enterMsg = {
   message: 'has signed in!'
 }
@@ -25,11 +23,11 @@ var chatroom = {
     $('body').on('click', '.submit', chatroom.submitUsername);
     $('body').on('click', '.send', chatroom.submitPost);
     // $('.enterUsername').on('click', '.delete', );
-    // $('.enterUsername').on('click', '.exit', );
+    $('body').on('click', '.exit', chatroom.exitChat);
   },
 
   initStyling: function(){
-    chatroom.getUser();
+    // chatroom.getUser();
   },
 
 
@@ -44,7 +42,7 @@ var chatroom = {
     $(selected).siblings('section').addClass('inactive');
 
     var newUser = chatroom.getUsernameFromDom(); //returns input in an obj
-    chatPosts += chatroom.addUser(newUser); //puts obj into array
+    chatroom.addUser(newUser); //puts obj into array
     $('input[name="username"]').val('');
   },
 
@@ -105,9 +103,7 @@ var chatroom = {
 
   getPostFromDom: function() {
     var username = sessionStorage.getItem('user');
-      console.log(username);
     var message = $('input[name="message"]').val();
-    console.log(message);
     return {
       username: username,
       message: message
@@ -161,7 +157,9 @@ var chatroom = {
   },
 
   exitChat: function(){
-
+    var selected = "." + $(this).attr('rel');
+    $(selected).closest('section').removeClass('inactive');
+    $(selected).siblings('section').addClass('inactive');
   }
 
 }
