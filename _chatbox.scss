@@ -1,0 +1,67 @@
+section.chatbox {
+  background-color: #ffd014;
+  height: 418px;
+  width: 80%;
+  border-radius: 17px;
+  margin: 35px auto;
+
+  div.chatWindow {
+    width: 80%;
+    height: 300px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    display: block;
+    overflow: auto;
+    position: relative;
+    top: 6%;
+
+    div.chatPost {
+      width: 100%;
+      position: relative;
+      background-color: inherit;
+      border-bottom: 1px solid #DADADA;
+
+      p {
+        width: 70%;
+      }
+
+      h6 {
+        display: inline-block;
+        margin: 0 14px;
+      }
+
+      button.delete {
+        position: absolute;
+        background-color: inherit;
+        right: 2%;
+        bottom: 11%;
+        height: 35px;
+        width: 35px;
+      }
+    }
+
+  }
+
+  form {
+    background-color: inherit;
+    width: 80%;
+    position: relative;
+    top: 12%;
+    margin: 0 auto;
+
+    input[name="message"] {
+      // margin-left: 10%;
+      background-color: #ffffff;
+      width: 86%;
+    }
+
+    button.send {
+      background-color: #ff77a0;
+      border: 0;
+      border-radius: 7px;
+      width: 100px;
+    }
+
+  }
+
+}

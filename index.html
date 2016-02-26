@@ -3,35 +3,53 @@
   <head>
     <meta charset="utf-8">
     <title>chattyPatty</title>
-    <link href='https://fonts.googleapis.com/css?family=Fondamento' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=IM+Fell+English+SC' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
+    <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans:700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Palanquin' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="main.css" media="screen" title="no title" charset="utf-8">
   </head>
   <body>
-    <header>
-<h1>ChattyPatty</h1>
-    </header>
+      <header class="chatty">
+        <h1>ChattyPatty</h1>
+      </header>
 
-    <section class="enterUsername">
-<input type="text" value="Enter User Name" name="UserName">
-<form class="" action="index.html" method="post">
-<button class="bottomBtn">Submit</button>
-</form>
-    </section>
+    <div class="container">
 
-      <section class="chatbox">
-<input type="text" value="Patty Get Chatty" name="UserName">
-<form class="" action="index.html" method="post">
-<button class="bottomBtn">Send Chatty</button>
-<button class="bottomBtn">Delete Chatty</button>
-</form>
+      <section class="enterUsername">
+        <form class="" action="index.html" method="post">
+          <input type="text" placeholder="Enter User Name" name="userName">
+          <button class="submit">Submit</button>
+        </form>
       </section>
 
-  <script src="bower_components/jquery/dist/jquery.js" charset="utf-8"></script>
-  <script src="bower_components/underscore/underscore.js" charset="utf-8"></script>
-  <script type="text/javascript" src="main.js"></script>
-<footer>
-<h5>A creation of Alex Lewis and Eric Clark</h5>
-</footer>
+      <section class="chatbox">
+
+        <div class="chatWindow">
+
+          <div class="chatPost">
+            <h6 class="userName">username</h6>
+            <p class="message">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos expedita, voluptatem neque recusandae cum tempora at similique nesciunt corporis in iure illum consequuntur officia ad et distinctio. Quam, temporibus, porro!</p>
+            <button class="delete">x</button>
+          </div>
+
+        </div>
+
+        <form class="" action="index.html" method="post">
+          <input type="text" placeholder="Get Chatty Patty" name="message">
+          <button class="send">Send Chatty</button>
+        </form>
+
+      </section>
+
+    </div>
+
+      <footer>
+        <h5>Brainchild :: Alexandria Lewis & Eric Clark</h5>
+      </footer>
+
+    <script src="bower_components/jquery/dist/jquery.js" charset="utf-8"></script>
+    <script src="bower_components/underscore/underscore.js" charset="utf-8"></script>
+    <script type="text/javascript" src="chatObj.js"></script>
+    <script type="text/javascript" src="main.js"></script>
   </body>
 </html>

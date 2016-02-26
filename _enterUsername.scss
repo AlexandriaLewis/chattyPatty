@@ -1,25 +1,31 @@
-header h1 {
-  text-align: center;
-  font-size: 5em;
-  font-family: 'IM Fell English SC', serif;
-  border: 2px solid;
-  background-color:#2aa517;
-  margin-top: 3%;
+section.enterUsername {
+  background-color: #ffd014;
+  height: 153px;
+  width: 55%;
+  border-radius: 17px;
+  margin: 35px auto;
+
+  form {
+    background-color: inherit;
+    position: relative;
+    width: 100%;
+    top: 36%;
   }
-input[name= "UserName"] {
-font-size: 18pt;
-font-family: fondamento;
-background-color: #ffd014;
-height: 38px;
-width: 62%;
-margin-left: 25px;
-margin-left: 20%;
-margin-top: 6%;
-}
-button.submit {
-  margin-left: 20%;
-  background-color: #ff77a0;
-  margin-top: 10px;
-  border-radius: 48%;
-  font-family: 'IM Fell English SC', serif;
+
+  input[name= "userName"] {
+    font-size: 18pt;
+    font-family: fondamento;
+    background-color: #ffffff;
+    height: 38px;
+    width: 62%;
+    margin-left: 14%;
+  }
+
+  button.submit {
+    background-color: #ff77a0;
+    border: 0;
+    border-radius: 7px;
+    width: 65px;
+  }
+
 }

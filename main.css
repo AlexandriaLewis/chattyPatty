@@ -1,29 +1,131 @@
 * {
   background-color: #3aa2f2;
-  color: #2b1425; }
+  color: #2b1425;
+  font-family: 'Palanquin', sans-serif;
+  font-size: 16px;
+  margin: 0;
+  padding: 0; }
 
-header h1 {
+.inactive {
+  display: none; }
+
+h1 {
   text-align: center;
+  background-color: inherit;
   font-size: 5em;
-  font-family: 'IM Fell English SC', serif;
-  border: 2px solid;
-  background-color:#2aa517;
-  margin-top: 3%;
-  }
-input[name= "UserName"] {
-font-size: 18pt;
-font-family: fondamento;
-background-color: #ffd014;
-height: 38px;
-width: 62%;
-margin-left: 25px;
-margin-left: 20%;
-margin-top: 6%;
-}
-button.bottomBtn {
-  margin-left: 20%;
-  background-color: #ff77a0;
-  margin-top: 10px;
-  border-radius: 48%;
-  font-family: 'IM Fell English SC', serif;
-}
+  font-family: 'Alegreya Sans', sans-serif;
+  margin-top: 3%; }
+
+h5 {
+  color: #3aa2f2;
+  background-color: inherit;
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 27px; }
+
+h6 {
+  color: #2b1425;
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 16px;
+  color: #2aa517;
+  background-color: inherit; }
+
+p {
+  color: #2b1425;
+  font-size: 12px;
+  background-color: inherit;
+  display: inline-block;
+  margin: 0; }
+
+header {
+  margin: 0;
+  padding: 0;
+  width: 103%; }
+
+footer {
+  color: #3aa2f2;
+  background-color: #2b1425;
+  margin: 0;
+  width: 100%;
+  padding-top: 1px; }
+  footer h5 {
+    margin: 0;
+    margin-top: 2%;
+    margin-right: 2%;
+    text-align: center; }
+
+div.container {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 74%; }
+
+section.enterUsername {
+  background-color: #ffd014;
+  height: 153px;
+  width: 55%;
+  border-radius: 17px;
+  margin: 35px auto; }
+  section.enterUsername form {
+    background-color: inherit;
+    position: relative;
+    width: 100%;
+    top: 36%; }
+  section.enterUsername input[name="userName"] {
+    font-size: 18pt;
+    font-family: fondamento;
+    background-color: #ffffff;
+    height: 38px;
+    width: 62%;
+    margin-left: 14%; }
+  section.enterUsername button.submit {
+    background-color: #ff77a0;
+    border: 0;
+    border-radius: 7px;
+    width: 65px; }
+
+section.chatbox {
+  background-color: #ffd014;
+  height: 418px;
+  width: 80%;
+  border-radius: 17px;
+  margin: 35px auto; }
+  section.chatbox div.chatWindow {
+    width: 80%;
+    height: 300px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    display: block;
+    overflow: auto;
+    position: relative;
+    top: 6%; }
+    section.chatbox div.chatWindow div.chatPost {
+      width: 100%;
+      position: relative;
+      background-color: inherit;
+      border-bottom: 1px solid #DADADA; }
+      section.chatbox div.chatWindow div.chatPost p {
+        width: 70%; }
+      section.chatbox div.chatWindow div.chatPost h6 {
+        display: inline-block;
+        margin: 0 14px; }
+      section.chatbox div.chatWindow div.chatPost button.delete {
+        position: absolute;
+        background-color: inherit;
+        right: 2%;
+        bottom: 11%;
+        height: 35px;
+        width: 35px; }
+  section.chatbox form {
+    background-color: inherit;
+    width: 80%;
+    position: relative;
+    top: 12%;
+    margin: 0 auto; }
+    section.chatbox form input[name="message"] {
+      background-color: #ffffff;
+      width: 86%; }
+    section.chatbox form button.send {
+      background-color: #ff77a0;
+      border: 0;
+      border-radius: 7px;
+      width: 100px; }
