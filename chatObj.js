@@ -1,1 +1,66 @@
-var chatObj = [];
+var chatPosts = [
+  {
+    username: "welcomeBot",
+    message: "Welcome to the chat!"
+  }
+];
+
+var chatroom = {
+
+  url: 'http://tiny-tiny.herokuapp.com/collections/chattyPatty',
+  init: function(){
+
+  },
+  //init events
+  //init styling
+
+  initEvents: function(){
+    $('.chatbox').on('click', '.submit', );
+    $('.enterUsername').on('click', '.delete', );
+    $('.enterUsername').on('click', '.send', );
+    $('.enterUsername').on('click', '.exit', );
+  },
+
+  initStyling: function(){
+    
+  },
+  //add all posts
+  //get posts
+
+  submitUsername: function(){
+
+  },
+
+  sendPost: function(){
+
+  },
+
+  getPostFromDom: function (){
+
+  },
+
+  deletePostFromDom: function(){
+
+  },
+
+  addAllPosts: function(){
+
+  },
+
+  getPosts: function(){
+
+  },
+
+  addPost: function(){
+
+  },
+
+  deletePost: function(){
+
+  },
+
+  exitChat: function(){
+
+  }
+
+}
