@@ -27,11 +27,10 @@ var chatroom = {
   },
 
   initStyling: function(){
-    var i = 1;
-    var timer = setInterval(chatroom.addAllPostsToDom(), 2000);
-    var timer = setInterval(function() { chatroom.addAllPostsToDom(i++) }, 2000);
+    var refresh = setInterval(function() {
+      chatroom.addAllPostsToDom
+    }, 2000);
   },
-
 
   submitUsername: function(event){
     event.preventDefault();
@@ -173,6 +172,7 @@ var chatroom = {
 },
 
   exitChat: function(){
+    clearInterval(refresh);
     var selected = "." + $(this).attr('rel');
     $(selected).closest('section').removeClass('inactive');
     $(selected).siblings('section').addClass('inactive');
