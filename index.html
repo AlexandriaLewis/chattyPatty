@@ -15,20 +15,20 @@
 
     <div class="container">
 
-      <section class="enterUsername" rel="chatbox">
+      <section class="enterUsername">
         <form class="" action="index.html" method="post">
           <input type="text" placeholder="Enter Username" name="userName">
-          <button class="submit">Submit</button>
+          <button class="submit" rel="chatbox">Submit</button>
         </form>
       </section>
 
-      <section class="chatbox" rel="enterUsername">
+      <section class="chatbox inactive">
 
         <div class="chatWindow">
 
           <div class="header">
             <p class="welcome">Welcome, </p><p class="username">username</p>
-            <button class="exit">exit chat</button>
+            <button class="exit" rel="enterUsername">exit chat</button>
           </div>
 
           <div class="signedIn">

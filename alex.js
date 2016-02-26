@@ -10,44 +10,107 @@ var enterMsg = {
   message: 'has signed in!'
 }
 
+// var username = "";
+
+
 var chatroom = {
 
-  url: 'http://tiny-tiny.herokuapp.com/collections/chattyPatty',
+  url: 'http://tiny-tiny.herokuapp.com/collections/chattyPatty2',
   init: function(){
-    //init events
-    //init styling
+    chatroom.initEvents();
+    chatroom.initStyling();
   },
 
   initEvents: function(){
-    $('.chatbox').on('click', '.submit', chatroom.submitUsername);
+    $('body').on('click', '.submit', chatroom.submitUsername);
     // $('.enterUsername').on('click', '.send', );
     // $('.enterUsername').on('click', '.delete', );
     // $('.enterUsername').on('click', '.exit', );
   },
 
   initStyling: function(){
-    //add allPosts
-    //get posts
+    chatroom.getUser();
   },
 
 
   submitUsername: function(event){
     event.preventDefault();
-    var newUser = chatroom.getUsernameFromDom(); //put content in obj
-    addPost(newUser);
-    addAllPosts(newUser);
+    console.log("IT WORKED!!!!");
+
+    username = $('input[name="userName"]').val();
+    sessionStorage.setItem('user', username);
+    console.log(username);
+
+    var selected = "." + $(this).attr('rel');
+    $(selected).closest('section').removeClass('inactive');
+    $(selected).siblings('section').addClass('inactive');
+
+    var newUser = chatroom.getUsernameFromDom(); //returns input in an obj
+    chatroom.addUser(newUser); //puts obj into array
+    $('input[name="username"]').val('');
   },
 
   getUsernameFromDom: function(){
     var username = sessionStorage.getItem('user');
-    var message = enterMsg.message
+    var message = enterMsg.message;
+    console.log(username);
     return {
       username: username,
       message: message
     }
   },
 
-  sendPost: function(){
+  addUser: function(newPost){
+    $.ajax({
+      url: chatroom.url,
+      method: 'POST',
+      data: newPost,
+      success: function(response){
+        chatroom.getUser();
+      },
+      error: function(err){
+        console.log("error", err);
+      }
+    })
+  },
+
+  getUser: function(){
+    $.ajax({
+       url: chatroom.url,
+       method: 'GET',
+       success: function (posts) {
+         console.log(posts);
+         chatroom.addUserToDom(posts);
+       },
+       error: function (err) {
+         console.log(err);
+       }
+     });
+  },
+
+  addUserToDom: function (postsArr) {
+    $('.chatWindow').html('');
+    _.each(postsArr, function (el) {
+
+      var header = _.template(template.header);
+      var signature = _.template(template.signedIn);
+      $('.chatWindow').append(header(el));
+      // addPostToDom(el, templates.post, $('section'));
+    })
+  },
+
+  addMessageToDom: function (postsArr) {
+    // $('.chatWindow').html('');
+    // _.each(postsArr, function (el) {
+    //
+    //   var header = _.template(template.header);
+    //   var signature = _.template(template.signedIn);
+    //   $('.chatWindow').append(header(el));
+    //   // addPostToDom(el, templates.post, $('section'));
+    // })
+  },
+
+  sendPost: function(){ //submit username
 
   },
 
@@ -59,29 +122,6 @@ var chatroom = {
 
   },
 
-  addAllPosts: function(){
-
-  },
-
-  getPosts: function(){
-
-  },
-
-  addPost: function(newPost){
-    chatPosts.push(newPost);
-    $.ajax({
-      url: chatroom.url,
-      method: 'POST',
-      data: newPost,
-      success: function(response){
-        chatroom.getPosts();
-      },
-      error: function(err){
-        console.log("error", err);
-      }
-    })
-  },
-
   deletePost: function(){
 
   },
@@ -91,3 +131,9 @@ var chatroom = {
   }
 
 }
+
+$(document).ready(function(){
+//-------------------------------------------------------------->
+chatroom.init();
+//-------------------------------------------------------------->
+})
