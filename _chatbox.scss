@@ -7,7 +7,9 @@ section.chatbox {
 
   div.header {
     background-color: inherit;
+    position: relative;
     border-radius: 17px;
+    top: 5%;
 
     p.welcome {
       margin-left: 12%;
@@ -26,8 +28,7 @@ section.chatbox {
       background-color: #ff77a0;
       border: 0;
       border-radius: 7px;
-      right: 19%;
-      top: 45%;
+      right: 12%;
     }
   }
 
@@ -39,11 +40,8 @@ section.chatbox {
     display: block;
     overflow: auto;
     position: relative;
-    top: 6%;
+    top: 8%;
 
-    div.header {
-      background-color: #ffd014;
-      border-bottom: 2px solid #ffd014;
       p.welcome {
         background-color: inherit;
         width: 65px;
@@ -107,16 +105,18 @@ section.chatbox {
         bottom: 11%;
         height: 35px;
         width: 35px;
+        border: none;
+      }
+      button.delete:active{
+        border: 2px solid #ff77a0;        
       }
     }
-
-  }
 
   form {
     background-color: inherit;
     width: 80%;
     position: relative;
-    top: 12%;
+    top: 10%;
     margin: 0 auto;
 
     input[name="message"] {

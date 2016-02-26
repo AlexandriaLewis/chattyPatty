@@ -16,7 +16,7 @@ var chatroom = {
   url: 'http://tiny-tiny.herokuapp.com/collections/chattyPatty3',
   init: function(){
     chatroom.initEvents();
-    chatroom.initStyling();
+    // chatroom.initStyling();
   },
 
   initEvents: function(){
@@ -27,7 +27,7 @@ var chatroom = {
   },
 
   initStyling: function(){
-    // chatroom.getUser();
+
   },
 
 
@@ -43,6 +43,7 @@ var chatroom = {
 
     var newUser = chatroom.getUsernameFromDom(); //returns input in an obj
     chatroom.addUser(newUser); //puts obj into array
+    $('p.username').html(sessionStorage.getItem('user'));
     $('input[name="username"]').val('');
   },
 
@@ -95,7 +96,7 @@ var chatroom = {
 
   submitPost: function (event) {
     event.preventDefault();
-    var   newPost = chatroom.getPostFromDom();
+    var newPost = chatroom.getPostFromDom();
       chatroom.addPost(newPost);
 
       $('input[name="message"]').val('');

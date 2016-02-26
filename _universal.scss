@@ -13,6 +13,10 @@ $color5: #2b1425 ; //rgba(43, 20, 37, 100) dark
   padding: 0;
 }
 
+button:focus {
+  outline: none;
+}
+
 .inactive {
   display: none;
 }

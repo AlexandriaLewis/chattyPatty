@@ -6,6 +6,9 @@
   margin: 0;
   padding: 0; }
 
+button:focus {
+  outline: none; }
+
 .inactive {
   display: none; }
 
@@ -98,7 +101,9 @@ section.chatbox {
   margin: 35px auto; }
   section.chatbox div.header {
     background-color: inherit;
-    border-radius: 17px; }
+    position: relative;
+    border-radius: 17px;
+    top: 5%; }
     section.chatbox div.header p.welcome {
       margin-left: 12%;
       margin-right: 2%; }
@@ -112,8 +117,7 @@ section.chatbox {
       background-color: #ff77a0;
       border: 0;
       border-radius: 7px;
-      right: 19%;
-      top: 45%; }
+      right: 12%; }
   section.chatbox div.chatWindow {
     width: 80%;
     height: 300px;
@@ -122,62 +126,62 @@ section.chatbox {
     display: block;
     overflow: auto;
     position: relative;
-    top: 6%; }
-    section.chatbox div.chatWindow div.header {
-      background-color: #ffd014;
-      border-bottom: 2px solid #ffd014; }
-      section.chatbox div.chatWindow div.header p.welcome {
-        background-color: inherit;
-        width: 65px;
-        margin-left: 6px; }
-      section.chatbox div.chatWindow div.header p.username {
-        font-size: 14px;
-        background-color: inherit;
-        color: #3aa2f2;
-        width: 58%;
-        font-weight: bold; }
-      section.chatbox div.chatWindow div.header button.exit {
-        background-color: #ff77a0;
-        border: 0;
-        border-radius: 7px;
-        width: 71px;
-        position: absolute;
-        right: 0; }
-    section.chatbox div.chatWindow div.signedIn {
-      width: 100%;
-      position: relative;
+    top: 8%; }
+    section.chatbox div.chatWindow p.welcome {
       background-color: inherit;
-      border-bottom: 1px solid #DADADA; }
-      section.chatbox div.chatWindow div.signedIn p {
-        width: 70%;
-        color: #ff77a0; }
-      section.chatbox div.chatWindow div.signedIn h6 {
-        color: #ff77a0;
-        display: inline-block;
-        margin: 0 14px; }
-    section.chatbox div.chatWindow div.chatPost {
-      width: 100%;
-      min-height: 48px;
-      position: relative;
+      width: 65px;
+      margin-left: 6px; }
+    section.chatbox div.chatWindow p.username {
+      font-size: 14px;
       background-color: inherit;
-      border-bottom: 1px solid #DADADA; }
-      section.chatbox div.chatWindow div.chatPost p {
-        width: 70%; }
-      section.chatbox div.chatWindow div.chatPost h6 {
-        display: inline-block;
-        margin: 0 14px; }
-      section.chatbox div.chatWindow div.chatPost button.delete {
-        position: absolute;
-        background-color: inherit;
-        right: 2%;
-        bottom: 11%;
-        height: 35px;
-        width: 35px; }
+      color: #3aa2f2;
+      width: 58%;
+      font-weight: bold; }
+    section.chatbox div.chatWindow button.exit {
+      background-color: #ff77a0;
+      border: 0;
+      border-radius: 7px;
+      width: 71px;
+      position: absolute;
+      right: 0; }
+  section.chatbox div.signedIn {
+    width: 100%;
+    position: relative;
+    background-color: inherit;
+    border-bottom: 1px solid #DADADA; }
+    section.chatbox div.signedIn p {
+      width: 70%;
+      color: #ff77a0; }
+    section.chatbox div.signedIn h6 {
+      color: #ff77a0;
+      display: inline-block;
+      margin: 0 14px; }
+  section.chatbox div.chatPost {
+    width: 100%;
+    min-height: 48px;
+    position: relative;
+    background-color: inherit;
+    border-bottom: 1px solid #DADADA; }
+    section.chatbox div.chatPost p {
+      width: 70%; }
+    section.chatbox div.chatPost h6 {
+      display: inline-block;
+      margin: 0 14px; }
+    section.chatbox div.chatPost button.delete {
+      position: absolute;
+      background-color: inherit;
+      right: 2%;
+      bottom: 11%;
+      height: 35px;
+      width: 35px;
+      border: none; }
+    section.chatbox div.chatPost button.delete:active {
+      border: 2px solid #ff77a0; }
   section.chatbox form {
     background-color: inherit;
     width: 80%;
     position: relative;
-    top: 12%;
+    top: 10%;
     margin: 0 auto; }
     section.chatbox form input[name="message"] {
       background-color: #ffffff;
