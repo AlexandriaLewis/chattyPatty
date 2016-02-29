@@ -151,12 +151,16 @@ var chatroom = {
    })
  },
 
-deletePostFromDom: function(event){
-var postId = $(this).closest('div').data('postid');
-console.log(postId);
-chatroom.deletePost(postId);
+  deletePostFromDom: function(event){
+    var postId = $(this).closest('div').data('postid');
+    var name = $(this).siblings('h6').text();
 
-chatroom.addAllPostsToDom();
+      if (sessionStorage.getItem('user')===name) {
+        chatroom.deletePost(postId);
+
+        chatroom.addAllPostsToDom();
+      };
+
   },
 
   deletePost: function (postId){
