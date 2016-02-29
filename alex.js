@@ -16,7 +16,7 @@ var chatroom = {
   url: 'http://tiny-tiny.herokuapp.com/collections/chattyPatty',
   init: function(){
     chatroom.initEvents();
-    // chatroom.initStyling();
+    chatroom.initStyling();
   },
 
   initEvents: function(){
@@ -27,8 +27,10 @@ var chatroom = {
   },
 
   initStyling: function(){
-    setInterval(function(){chatroom.getPosts}, 200);
+    // chatroom.getPosts();
+    setInterval(chatroom.getPosts, 2000);
   },
+
 
   submitUsername: function(event){
     event.preventDefault();
@@ -133,6 +135,7 @@ var chatroom = {
      method: 'GET',
      success: function (chatPosts) {
        chatroom.addAllPostsToDom(chatPosts);
+       console.log(chatPosts);
      },
      error: function (err) {
        console.log(err);
@@ -150,12 +153,12 @@ var chatroom = {
    })
  },
 
-  deletePostFromDom: function(event){
-    var postId = $(this).closest('div').data('postid');
-    console.log(postId);
-    chatroom.deletePost(postId);
+deletePostFromDom: function(event){
+var postId = $(this).closest('div').data('postid');
+console.log(postId);
+chatroom.deletePost(postId);
 
-    chatroom.addAllPostsToDom();
+chatroom.addAllPostsToDom();
   },
 
   deletePost: function (postId){
@@ -170,7 +173,6 @@ var chatroom = {
 },
 
   exitChat: function(){
-    clearInterval(refresh);
     var selected = "." + $(this).attr('rel');
     $(selected).closest('section').removeClass('inactive');
     $(selected).siblings('section').addClass('inactive');
@@ -179,6 +181,4 @@ var chatroom = {
   $(document).ready(function(){
   //-------------------------------------------------------------->
   chatroom.init();
-
-  //-------------------------------------------------------------->
 })
